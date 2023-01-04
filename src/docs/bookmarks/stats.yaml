@@ -1,0 +1,34 @@
+Get Bookmarks Stats On User
+
+---
+
+tags:
+  - Bookmarks
+parameters:
+  - in : header
+    name : Authorization
+    required : true
+
+responses:
+  200:
+    description: Bookmarks stat data
+    schema:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              short_url:
+                type: "string"
+              url:
+                type: "string"
+              visits:
+                type: integer
+
+  
+  401:
+    description: Fails to get items due to authentication error

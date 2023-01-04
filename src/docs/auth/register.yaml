@@ -1,0 +1,49 @@
+Register new User
+
+---
+
+tags:
+  - Authentication
+parameters:
+  - in : body 
+    name : new user
+    description: register new user account
+    required : true
+    schema:
+      type: object
+      required:
+        - "username"
+        - "password"
+        - "email"
+      properties:
+        username:
+          type: "string"
+          example: "myUsername"
+        email:
+          type: "string"
+          example: "user@mail.com"
+        password:
+          type: "string"
+          format: password
+          example: "******"
+responses:
+  201:
+    description: user created
+    schema:
+      type: object
+      properties:
+        message:
+          type: "string"
+        user:
+          type: object
+          properties:
+            email:
+              type: "string"
+            username:
+              type: "string"
+
+  400:
+    description: Fails to create new account
+
+  409:
+    description: Create failed, data already used by another account

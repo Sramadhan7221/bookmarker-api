@@ -1,0 +1,44 @@
+User log in
+
+---
+
+tags:
+  - Authentication
+parameters:
+  - in : body 
+    name : User
+    description: To use API you should login here before
+    required : true
+    schema:
+      type: object
+      required:
+        - "username"
+        - "password"
+      properties:
+        username:
+          type: "string"
+          example: "myUsername"
+        password:
+          type: "string"
+          format: password
+          example: "******"
+responses:
+  200:
+    description: login successfuly
+    schema:
+      type: object
+      properties:
+        user:
+          type: object
+          properties:
+            refresh:
+              type: "string"
+            access:
+              type: "string"
+            email:
+              type: "string"
+            username:
+              type: "string"
+
+  400:
+    description: Fails to login
